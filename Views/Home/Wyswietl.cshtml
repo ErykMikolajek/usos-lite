@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "Wyswietl";
+}
+
+<ul>
+<div class="text-center">
+    @foreach (String wpis in ViewData["wpis"] as IList<String>)
+        {
+                                                            <li>@wpis</li>
+        }
+</div>
+</ul>
+
+</br>
+</br>
+</br>
+
+<div class="text-center">
+    <h1 class="display-4">Dodaj wpis</h1>
+    <form action="/Dodaj" method="post">  
+        <div class="container">   
+            </br>
+            </br>
+            <label>Wpis: </label>   
+            <input type="text" placeholder="Podaj wpis" name="wpis_" required>  
+            </br>
+            </br>
+            <button type="submit">Dodaj</button>  
+        </div>   
+    </form>     
+</div>
