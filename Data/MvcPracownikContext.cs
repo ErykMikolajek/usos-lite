@@ -19,5 +19,9 @@ namespace MvcPracownik.Data
         public DbSet<MvcPracownik.Models.Budynek> Budynek { get; set; } = default!;
 
         public DbSet<MvcPracownik.Models.Zajecia> Zajecia { get; set; } = default!;
+
+        public DbSet<MvcPracownik.Models.Student> Student { get; set; } = default!;
+
+        public DbSet<MvcPracownik.Models.Student_Zajecia> Student_Zajecia { get; set; } = default!;
     }
 }

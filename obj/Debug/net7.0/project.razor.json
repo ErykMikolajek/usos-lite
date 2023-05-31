@@ -18655,6 +18655,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Student_Zajecia/Delete.cshtml",
+      "TargetPath": "Views\\Student_Zajecia\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/USOS/Delete.cshtml",
       "TargetPath": "Views\\USOS\\Delete.cshtml",
       "FileKind": "mvc"
@@ -18675,8 +18680,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Student/Edit.cshtml",
+      "TargetPath": "Views\\Student\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Home/HomePage.cshtml",
       "TargetPath": "Views\\Home\\HomePage.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Student_Zajecia/Index.cshtml",
+      "TargetPath": "Views\\Student_Zajecia\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -18697,6 +18712,16 @@
     {
       "FilePath": "/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Student_Zajecia/Create.cshtml",
+      "TargetPath": "Views\\Student_Zajecia\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Student/Delete.cshtml",
+      "TargetPath": "Views\\Student\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -18735,6 +18760,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Student/Index.cshtml",
+      "TargetPath": "Views\\Student\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Budynek/Delete.cshtml",
       "TargetPath": "Views\\Budynek\\Delete.cshtml",
       "FileKind": "mvc"
@@ -18762,6 +18792,26 @@
     {
       "FilePath": "/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Zajecia/Index.cshtml",
       "TargetPath": "Views\\Zajecia\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Student/Create.cshtml",
+      "TargetPath": "Views\\Student\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Student_Zajecia/Details.cshtml",
+      "TargetPath": "Views\\Student_Zajecia\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Student/Details.cshtml",
+      "TargetPath": "Views\\Student\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Student_Zajecia/Edit.cshtml",
+      "TargetPath": "Views\\Student_Zajecia\\Edit.cshtml",
       "FileKind": "mvc"
     }
   ],

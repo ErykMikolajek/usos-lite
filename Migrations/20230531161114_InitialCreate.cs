@@ -15,13 +15,13 @@ namespace lab10.Migrations
                 name: "Budynek",
                 columns: table => new
                 {
-                    Id_zajec = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id_budynku = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Nazwa = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Budynek", x => x.Id_zajec);
+                    table.PrimaryKey("PK_Budynek", x => x.Id_budynku);
                 });
 
             migrationBuilder.CreateTable(
@@ -32,7 +32,7 @@ namespace lab10.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Imie = table.Column<string>(type: "TEXT", nullable: false),
                     Nazwisko = table.Column<string>(type: "TEXT", nullable: false),
-                    DataZatrudnienia = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    DataOfStudiesStart = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -46,16 +46,16 @@ namespace lab10.Migrations
                     Id_zajec = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Nazwa = table.Column<string>(type: "TEXT", nullable: false),
-                    BudynekId_zajec = table.Column<int>(type: "INTEGER", nullable: true)
+                    BudynekId_budynku = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Zajecia", x => x.Id_zajec);
                     table.ForeignKey(
-                        name: "FK_Zajecia_Budynek_BudynekId_zajec",
-                        column: x => x.BudynekId_zajec,
+                        name: "FK_Zajecia_Budynek_BudynekId_budynku",
+                        column: x => x.BudynekId_budynku,
                         principalTable: "Budynek",
-                        principalColumn: "Id_zajec");
+                        principalColumn: "Id_budynku");
                 });
 
             migrationBuilder.CreateTable(
@@ -80,27 +80,27 @@ namespace lab10.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "StudentZajecia",
+                name: "Student_Zajecia",
                 columns: table => new
                 {
-                    StudenciId = table.Column<int>(type: "INTEGER", nullable: false),
-                    ZajeciaId_zajec = table.Column<int>(type: "INTEGER", nullable: false)
+                    Student_Zajecia_ID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    zajeciaId_zajec = table.Column<int>(type: "INTEGER", nullable: true),
+                    studentId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StudentZajecia", x => new { x.StudenciId, x.ZajeciaId_zajec });
+                    table.PrimaryKey("PK_Student_Zajecia", x => x.Student_Zajecia_ID);
                     table.ForeignKey(
-                        name: "FK_StudentZajecia_Student_StudenciId",
-                        column: x => x.StudenciId,
+                        name: "FK_Student_Zajecia_Student_studentId",
+                        column: x => x.studentId,
                         principalTable: "Student",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_StudentZajecia_Zajecia_ZajeciaId_zajec",
-                        column: x => x.ZajeciaId_zajec,
+                        name: "FK_Student_Zajecia_Zajecia_zajeciaId_zajec",
+                        column: x => x.zajeciaId_zajec,
                         principalTable: "Zajecia",
-                        principalColumn: "Id_zajec",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id_zajec");
                 });
 
             migrationBuilder.CreateIndex(
@@ -109,14 +109,19 @@ namespace lab10.Migrations
                 column: "ZajeciaId_zajec");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StudentZajecia_ZajeciaId_zajec",
-                table: "StudentZajecia",
-                column: "ZajeciaId_zajec");
+                name: "IX_Student_Zajecia_studentId",
+                table: "Student_Zajecia",
+                column: "studentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Zajecia_BudynekId_zajec",
+                name: "IX_Student_Zajecia_zajeciaId_zajec",
+                table: "Student_Zajecia",
+                column: "zajeciaId_zajec");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Zajecia_BudynekId_budynku",
                 table: "Zajecia",
-                column: "BudynekId_zajec");
+                column: "BudynekId_budynku");
         }
 
         /// <inheritdoc />
@@ -126,7 +131,7 @@ namespace lab10.Migrations
                 name: "Pracownik");
 
             migrationBuilder.DropTable(
-                name: "StudentZajecia");
+                name: "Student_Zajecia");
 
             migrationBuilder.DropTable(
                 name: "Student");

@@ -19,7 +19,7 @@ namespace lab10.Migrations
 
             modelBuilder.Entity("MvcPracownik.Models.Budynek", b =>
                 {
-                    b.Property<int>("Id_zajec")
+                    b.Property<int>("Id_budynku")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -27,7 +27,7 @@ namespace lab10.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id_zajec");
+                    b.HasKey("Id_budynku");
 
                     b.ToTable("Budynek");
                 });
@@ -65,7 +65,7 @@ namespace lab10.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("DataZatrudnienia")
+                    b.Property<DateTime>("DataOfStudiesStart")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Imie")
@@ -81,13 +81,34 @@ namespace lab10.Migrations
                     b.ToTable("Student");
                 });
 
+            modelBuilder.Entity("MvcPracownik.Models.Student_Zajecia", b =>
+                {
+                    b.Property<int>("Student_Zajecia_ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("studentId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("zajeciaId_zajec")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Student_Zajecia_ID");
+
+                    b.HasIndex("studentId");
+
+                    b.HasIndex("zajeciaId_zajec");
+
+                    b.ToTable("Student_Zajecia");
+                });
+
             modelBuilder.Entity("MvcPracownik.Models.Zajecia", b =>
                 {
                     b.Property<int>("Id_zajec")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("BudynekId_zajec")
+                    b.Property<int?>("BudynekId_budynku")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Nazwa")
@@ -96,24 +117,9 @@ namespace lab10.Migrations
 
                     b.HasKey("Id_zajec");
 
-                    b.HasIndex("BudynekId_zajec");
+                    b.HasIndex("BudynekId_budynku");
 
                     b.ToTable("Zajecia");
-                });
-
-            modelBuilder.Entity("StudentZajecia", b =>
-                {
-                    b.Property<int>("StudenciId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ZajeciaId_zajec")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("StudenciId", "ZajeciaId_zajec");
-
-                    b.HasIndex("ZajeciaId_zajec");
-
-                    b.ToTable("StudentZajecia");
                 });
 
             modelBuilder.Entity("MvcPracownik.Models.Pracownik", b =>
@@ -125,28 +131,28 @@ namespace lab10.Migrations
                     b.Navigation("Zajecia");
                 });
 
+            modelBuilder.Entity("MvcPracownik.Models.Student_Zajecia", b =>
+                {
+                    b.HasOne("MvcPracownik.Models.Student", "student")
+                        .WithMany("student_Zajecia")
+                        .HasForeignKey("studentId");
+
+                    b.HasOne("MvcPracownik.Models.Zajecia", "zajecia")
+                        .WithMany("student_Zajecia")
+                        .HasForeignKey("zajeciaId_zajec");
+
+                    b.Navigation("student");
+
+                    b.Navigation("zajecia");
+                });
+
             modelBuilder.Entity("MvcPracownik.Models.Zajecia", b =>
                 {
                     b.HasOne("MvcPracownik.Models.Budynek", "Budynek")
                         .WithMany("Zajecia")
-                        .HasForeignKey("BudynekId_zajec");
+                        .HasForeignKey("BudynekId_budynku");
 
                     b.Navigation("Budynek");
-                });
-
-            modelBuilder.Entity("StudentZajecia", b =>
-                {
-                    b.HasOne("MvcPracownik.Models.Student", null)
-                        .WithMany()
-                        .HasForeignKey("StudenciId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MvcPracownik.Models.Zajecia", null)
-                        .WithMany()
-                        .HasForeignKey("ZajeciaId_zajec")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("MvcPracownik.Models.Budynek", b =>
@@ -154,9 +160,16 @@ namespace lab10.Migrations
                     b.Navigation("Zajecia");
                 });
 
+            modelBuilder.Entity("MvcPracownik.Models.Student", b =>
+                {
+                    b.Navigation("student_Zajecia");
+                });
+
             modelBuilder.Entity("MvcPracownik.Models.Zajecia", b =>
                 {
                     b.Navigation("Pracownicy");
+
+                    b.Navigation("student_Zajecia");
                 });
 #pragma warning restore 612, 618
         }

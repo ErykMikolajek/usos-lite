@@ -52,6 +52,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9XeXN3aWV0bC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Pracownik/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJhY293bmlrL0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Pracownik/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJhY293bmlrL0RlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Pracownik/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJhY293bmlrL0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Pracownik/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJhY293bmlrL0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Pracownik/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJhY293bmlrL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -60,24 +80,44 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/USOS/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVVNPUy9DcmVhdGUuY3NodG1s
+[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Student/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3R1ZGVudC9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/USOS/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVVNPUy9EZWxldGUuY3NodG1s
+[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Student/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3R1ZGVudC9EZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/USOS/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVVNPUy9EZXRhaWxzLmNzaHRtbA==
+[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Student/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3R1ZGVudC9EZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/USOS/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVVNPUy9FZGl0LmNzaHRtbA==
+[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Student/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3R1ZGVudC9FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/USOS/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVVNPUy9JbmRleC5jc2h0bWw=
+[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Student/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3R1ZGVudC9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Student_Zajecia/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3R1ZGVudF9aYWplY2lhL0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Student_Zajecia/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3R1ZGVudF9aYWplY2lhL0RlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Student_Zajecia/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3R1ZGVudF9aYWplY2lhL0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Student_Zajecia/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3R1ZGVudF9aYWplY2lhL0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Student_Zajecia/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3R1ZGVudF9aYWplY2lhL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Zajecia/Create.cshtml]

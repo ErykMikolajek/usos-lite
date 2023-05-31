@@ -10,87 +10,87 @@ using MvcPracownik.Models;
 
 namespace lab10.Controllers
 {
-    public class BudynekController : Controller
+    public class Student_ZajeciaController : Controller
     {
         private readonly MvcPracownikContext _context;
 
-        public BudynekController(MvcPracownikContext context)
+        public Student_ZajeciaController(MvcPracownikContext context)
         {
             _context = context;
         }
 
-        // GET: Budynek
+        // GET: Student_Zajecia
         public async Task<IActionResult> Index()
         {
-              return _context.Budynek != null ? 
-                          View(await _context.Budynek.ToListAsync()) :
-                          Problem("Entity set 'MvcPracownikContext.Budynek'  is null.");
+              return _context.Student_Zajecia != null ? 
+                          View(await _context.Student_Zajecia.ToListAsync()) :
+                          Problem("Entity set 'MvcPracownikContext.Student_Zajecia'  is null.");
         }
 
-        // GET: Budynek/Details/5
+        // GET: Student_Zajecia/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Budynek == null)
+            if (id == null || _context.Student_Zajecia == null)
             {
                 return NotFound();
             }
 
-            var budynek = await _context.Budynek
-                .FirstOrDefaultAsync(m => m.Id_budynku == id);
-            if (budynek == null)
+            var student_Zajecia = await _context.Student_Zajecia
+                .FirstOrDefaultAsync(m => m.Student_Zajecia_ID == id);
+            if (student_Zajecia == null)
             {
                 return NotFound();
             }
 
-            return View(budynek);
+            return View(student_Zajecia);
         }
 
-        // GET: Budynek/Create
+        // GET: Student_Zajecia/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Budynek/Create
+        // POST: Student_Zajecia/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id_budynku,Nazwa")] Budynek budynek)
+        public async Task<IActionResult> Create([Bind("Student_Zajecia_ID")] Student_Zajecia student_Zajecia)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(budynek);
+                _context.Add(student_Zajecia);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(budynek);
+            return View(student_Zajecia);
         }
 
-        // GET: Budynek/Edit/5
+        // GET: Student_Zajecia/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Budynek == null)
+            if (id == null || _context.Student_Zajecia == null)
             {
                 return NotFound();
             }
 
-            var budynek = await _context.Budynek.FindAsync(id);
-            if (budynek == null)
+            var student_Zajecia = await _context.Student_Zajecia.FindAsync(id);
+            if (student_Zajecia == null)
             {
                 return NotFound();
             }
-            return View(budynek);
+            return View(student_Zajecia);
         }
 
-        // POST: Budynek/Edit/5
+        // POST: Student_Zajecia/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id_budynku,Nazwa")] Budynek budynek)
+        public async Task<IActionResult> Edit(int id, [Bind("Student_Zajecia_ID")] Student_Zajecia student_Zajecia)
         {
-            if (id != budynek.Id_budynku)
+            if (id != student_Zajecia.Student_Zajecia_ID)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace lab10.Controllers
             {
                 try
                 {
-                    _context.Update(budynek);
+                    _context.Update(student_Zajecia);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!BudynekExists(budynek.Id_budynku))
+                    if (!Student_ZajeciaExists(student_Zajecia.Student_Zajecia_ID))
                     {
                         return NotFound();
                     }
@@ -115,49 +115,49 @@ namespace lab10.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(budynek);
+            return View(student_Zajecia);
         }
 
-        // GET: Budynek/Delete/5
+        // GET: Student_Zajecia/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Budynek == null)
+            if (id == null || _context.Student_Zajecia == null)
             {
                 return NotFound();
             }
 
-            var budynek = await _context.Budynek
-                .FirstOrDefaultAsync(m => m.Id_budynku == id);
-            if (budynek == null)
+            var student_Zajecia = await _context.Student_Zajecia
+                .FirstOrDefaultAsync(m => m.Student_Zajecia_ID == id);
+            if (student_Zajecia == null)
             {
                 return NotFound();
             }
 
-            return View(budynek);
+            return View(student_Zajecia);
         }
 
-        // POST: Budynek/Delete/5
+        // POST: Student_Zajecia/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Budynek == null)
+            if (_context.Student_Zajecia == null)
             {
-                return Problem("Entity set 'MvcPracownikContext.Budynek'  is null.");
+                return Problem("Entity set 'MvcPracownikContext.Student_Zajecia'  is null.");
             }
-            var budynek = await _context.Budynek.FindAsync(id);
-            if (budynek != null)
+            var student_Zajecia = await _context.Student_Zajecia.FindAsync(id);
+            if (student_Zajecia != null)
             {
-                _context.Budynek.Remove(budynek);
+                _context.Student_Zajecia.Remove(student_Zajecia);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool BudynekExists(int id)
+        private bool Student_ZajeciaExists(int id)
         {
-          return (_context.Budynek?.Any(e => e.Id_budynku == id)).GetValueOrDefault();
+          return (_context.Student_Zajecia?.Any(e => e.Student_Zajecia_ID == id)).GetValueOrDefault();
         }
     }
 }

@@ -10,23 +10,23 @@ using MvcPracownik.Models;
 
 namespace lab10.Controllers
 {
-    public class USOSController : Controller
+    public class PracownikController : Controller
     {
         private readonly MvcPracownikContext _context;
 
-        public USOSController(MvcPracownikContext context)
+        public PracownikController(MvcPracownikContext context)
         {
             _context = context;
         }
 
-        // GET: USOS
+        // GET: Pracownik
         public async Task<IActionResult> Index()
         {
             var prac = _context.Pracownik.Include(p => p.Zajecia).AsNoTracking();
             return View(await prac.ToListAsync());
         }
 
-        // GET: USOS/Details/5
+        // GET: Pracownik/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -45,15 +45,14 @@ namespace lab10.Controllers
             return View(pracownik);
         }
 
-        // GET: USOS/Create
+        // GET: Pracownik/Create
         public IActionResult Create()
         {
-            PopulateBudynekDropDownList();
             PopulateZajeciaDropDownList();
             return View();
         }
 
-        // POST: USOS/Create
+        // POST: Pracownik/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -80,7 +79,7 @@ namespace lab10.Controllers
             return View(pracownik);
         }
 
-        // GET: USOS/Edit/5
+        // GET: Pracownik/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Pracownik == null)
@@ -107,7 +106,7 @@ namespace lab10.Controllers
             return View(pracownik);
         }
 
-        // POST: USOS/Edit/5
+        // POST: Pracownik/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -124,9 +123,6 @@ namespace lab10.Controllers
                 {
                     try
                     {
-
-                        //String etatValue = form["Etat.Id"];
-                        //String zespolValue = form["Zespol.Id_zespolu"];
                         string zajeciaValue = form["ZajeciaDropDown"];
 
 
@@ -171,7 +167,7 @@ namespace lab10.Controllers
             return View(pracownik);
         }
 
-        // GET: USOS/Delete/5
+        // GET: Pracownik/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -191,7 +187,7 @@ namespace lab10.Controllers
             return View(pracownik);
         }
 
-        // POST: USOS/Delete/5
+        // POST: Pracownik/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -215,15 +211,6 @@ namespace lab10.Controllers
           return (_context.Pracownik?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
-        private void PopulateBudynekDropDownList(object selectedBudynek = null)
-        {
-            var wybraneBudynki = from b in _context.Budynek
-                                orderby b.Nazwa
-                                select b;
-            var res = wybraneBudynki.AsNoTracking();
-            ViewBag.BudynekID = new SelectList(res, "Id", "Nazwa", selectedBudynek);
-        }
-
         private void PopulateZajeciaDropDownList(object selectedZajecia = null) 
         {
             var wybraneZajecia = from z in _context.Zajecia
@@ -237,12 +224,6 @@ namespace lab10.Controllers
 
 /* TODO:
 
-jest TYLKO create dla pracownika
-
 brak pozostalych create edit w innych controlerach etc...
-
-polaczenia miedzy tabelami sprawdzic
-
-dropdown dla wielu elementow???
 
 */
