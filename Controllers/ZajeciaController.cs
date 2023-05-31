@@ -22,9 +22,8 @@ namespace lab10.Controllers
         // GET: Zajecia
         public async Task<IActionResult> Index()
         {
-              return _context.Zajecia != null ? 
-                          View(await _context.Zajecia.ToListAsync()) :
-                          Problem("Entity set 'MvcPracownikContext.Zajecia'  is null.");
+            var zaj = _context.Zajecia.Include(p => p.Budynek).AsNoTracking();
+            return View(await zaj.ToListAsync());
         }
 
         // GET: Zajecia/Details/5
@@ -36,6 +35,7 @@ namespace lab10.Controllers
             }
 
             var zajecia = await _context.Zajecia
+                .Include(p => p.Budynek)
                 .FirstOrDefaultAsync(m => m.Id_zajec == id);
             if (zajecia == null)
             {
@@ -48,6 +48,7 @@ namespace lab10.Controllers
         // GET: Zajecia/Create
         public IActionResult Create()
         {
+            PopulateBudynekDropDownList();
             return View();
         }
 
@@ -56,10 +57,22 @@ namespace lab10.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id_zajec,Nazwa")] Zajecia zajecia)
+        public async Task<IActionResult> Create([Bind("Id_zajec,Nazwa")] Zajecia zajecia,
+            IFormCollection form)
         {
+            string budynekValue = form["BudynekDropDown"];
             if (ModelState.IsValid)
             {
+
+                Budynek budynek = null;
+                if (budynekValue != "-1")
+                {
+                    var ee = _context.Budynek.Where(e => e.Id_budynku == int.Parse(budynekValue));
+                    if (ee.Count() > 0)
+                        budynek = ee.First();
+                }
+                zajecia.Budynek = budynek;
+
                 _context.Add(zajecia);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -75,11 +88,21 @@ namespace lab10.Controllers
                 return NotFound();
             }
 
-            var zajecia = await _context.Zajecia.FindAsync(id);
+            var zajecia = _context.Zajecia.Where(p => p.Id_zajec == id)
+                .Include(p => p.Budynek).First();
             if (zajecia == null)
             {
                 return NotFound();
             }
+            if (zajecia.Budynek != null)
+            {
+                PopulateBudynekDropDownList(zajecia.Budynek.Id_budynku);
+            }
+            else
+            {
+                PopulateBudynekDropDownList();
+            }
+
             return View(zajecia);
         }
 
@@ -88,7 +111,7 @@ namespace lab10.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id_zajec,Nazwa")] Zajecia zajecia)
+        public async Task<IActionResult> Edit(int id, [Bind("Id_zajec,Nazwa")] Zajecia zajecia, IFormCollection form)
         {
             if (id != zajecia.Id_zajec)
             {
@@ -99,8 +122,31 @@ namespace lab10.Controllers
             {
                 try
                 {
-                    _context.Update(zajecia);
-                    await _context.SaveChangesAsync();
+                        string budynekValue = form["BudynekDropDown"];
+
+
+                        Budynek budynek = null;
+                        if (budynekValue != "-1")
+                        {
+                            var ee = _context.Budynek.Where(e => e.Id_budynku == int.Parse(budynekValue));
+                            if (ee.Count() > 0)
+                                budynek = ee.First();
+                        }
+                        zajecia.Budynek = budynek;
+
+                        //Aby kontekst śledził zmiany w referowanych kolumnach etat oraz zespol
+                        //należy "dostać" się do obiektu przez dbContext i dołączyć obiekty etat
+                        //i zespol. Bez tego kolumny etat i zespół nie będą mogły być zmodyfikowane
+                        //wartością NULL-ową, czyli nie będzie się dało usunąć powiązania. 
+                        //Ustawienie na inną wartość niż NULL będzie działać przy "zwykłym"
+                        // _context.Update(pracownik);
+                        Zajecia pp = _context.Zajecia.Where(p => p.Id_zajec == id)
+                        .Include(p => p.Budynek)
+                        .First();
+                        pp.Budynek = budynek;
+                        pp.Nazwa = zajecia.Nazwa;
+
+                        await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -126,8 +172,10 @@ namespace lab10.Controllers
                 return NotFound();
             }
 
-            var zajecia = await _context.Zajecia
-                .FirstOrDefaultAsync(m => m.Id_zajec == id);
+            // var zajecia = await _context.Zajecia
+            //     .FirstOrDefaultAsync(m => m.Id_zajec == id);
+            var zajecia = _context.Zajecia.Where(p => p.Id_zajec == id)
+                .Include(p => p.Budynek).First();
             if (zajecia == null)
             {
                 return NotFound();
@@ -159,5 +207,16 @@ namespace lab10.Controllers
         {
           return (_context.Zajecia?.Any(e => e.Id_zajec == id)).GetValueOrDefault();
         }
+
+        private void PopulateBudynekDropDownList(object selectedBudynek = null) 
+        {
+            var wybranyBudynek = from z in _context.Budynek
+                                orderby z.Nazwa
+                                select z;
+            var res = wybranyBudynek.AsNoTracking();
+            ViewBag.BudynekId = new SelectList(res, "Id_budynku", "Nazwa", selectedBudynek);
+        }
+
+
     }
 }

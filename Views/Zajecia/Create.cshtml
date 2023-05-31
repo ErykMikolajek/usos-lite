@@ -17,6 +17,7 @@
                 <input asp-for="Nazwa" class="form-control" />
                 <span asp-validation-for="Nazwa" class="text-danger"></span>
             </div>
+            @Html.DropDownList("BudynekDropDown",(SelectList)ViewBag.BudynekId)
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

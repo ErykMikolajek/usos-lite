@@ -10,6 +10,19 @@
     <h4>Student_Zajecia</h4>
     <hr />
     <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.zajecia)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.zajecia.Nazwa)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.student)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.student.Nazwisko)
+            @Html.DisplayFor(model => model.student.Imie)
+        </dd>
     </dl>
 </div>
 <div>

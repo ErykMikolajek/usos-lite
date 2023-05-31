@@ -12,6 +12,8 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @Html.DropDownList("ZajeciaDropDown",(SelectList)ViewBag.ZajeciaID)
+            @Html.DropDownList("StudentDropDown",(SelectList)ViewBag.StudentID)
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
