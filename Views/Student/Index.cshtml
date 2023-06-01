@@ -21,6 +21,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.DataOfStudiesStart)
             </th>
+            <th>
+                @Html.DisplayName("Zajęcia")
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -35,6 +38,17 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DataOfStudiesStart)
+            </td>
+
+            <td>
+                @foreach (var item1 in ViewBag.Student_Zajecia_data)
+                {
+                    @if (item1.Id == item.Id)
+                    {
+                                            <p>@item1.Nazwa</p>
+                    }
+                }
+
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
