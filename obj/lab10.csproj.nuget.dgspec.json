@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/eryk/Documents/Programowanie Zaawansowane 2/lab10/lab10.csproj": {}
+    "/Users/jakubkubicki/Desktop/PZ2/usos-lite/lab10.csproj": {}
   },
   "projects": {
-    "/Users/eryk/Documents/Programowanie Zaawansowane 2/lab10/lab10.csproj": {
+    "/Users/jakubkubicki/Desktop/PZ2/usos-lite/lab10.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/eryk/Documents/Programowanie Zaawansowane 2/lab10/lab10.csproj",
+        "projectUniqueName": "/Users/jakubkubicki/Desktop/PZ2/usos-lite/lab10.csproj",
         "projectName": "lab10",
-        "projectPath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/lab10/lab10.csproj",
-        "packagesPath": "/Users/eryk/.nuget/packages/",
-        "outputPath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/lab10/obj/",
+        "projectPath": "/Users/jakubkubicki/Desktop/PZ2/usos-lite/lab10.csproj",
+        "packagesPath": "/Users/jakubkubicki/.nuget/packages/",
+        "outputPath": "/Users/jakubkubicki/Desktop/PZ2/usos-lite/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/eryk/.nuget/NuGet/NuGet.Config"
+          "/Users/jakubkubicki/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -38,9 +38,29 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[7.0.6, )"
             }
           },
           "imports": [
