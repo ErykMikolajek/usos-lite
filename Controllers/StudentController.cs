@@ -22,20 +22,9 @@ namespace lab10.Controllers
         // GET: Student
         public async Task<IActionResult> Index()
         {
-            string sqlQuery = "SELECT * FROM Student_Zajecia";
-            // var result = from z in _context.Student_Zajecia
-            //                     orderby z.Student_Zajecia_ID
-            //                     select z.zajecia.Nazwa;
 
             var result = _context.Student_Zajecia.Select(x => new { x.student.Id, x.zajecia.Nazwa }).ToList();
-
-
-            // ViewData["QueryResult"] = result;
             ViewBag.Student_Zajecia_data = result;
-
-            int iteration_number = result.Count();
-
-            ViewData["iteration_number"] = iteration_number;
 
 
               return _context.Student != null ? 
