@@ -26,61 +26,6 @@ public class HomeController : Controller
 
     }
 
-    [Route("dodaj/")]
-    public IActionResult Dodaj(String wpis_)
-    {
-        var connectionStringBuilder = new SqliteConnectionStringBuilder();
-        connectionStringBuilder.DataSource = "dane.db";
-
-        String sql = "INSERT INTO dane (wpis) VALUES ('" + wpis_ + "');";
-        using (var connection = new SqliteConnection(connectionStringBuilder.ConnectionString))
-        {
-            connection.Open();
-            using (var command = new SqliteCommand(sql, connection))
-            {
-                command.ExecuteNonQuery();
-            }
-        }
-
-        return View("Index");
-    }
-
-    [Route("Wyswietl/")]
-    public IActionResult Wyswietl()
-    {
-
-        if (HttpContext.Session.GetString("Logged in") == null)
-            return View("Views/Auth/Login.cshtml");
-
-        var connectionStringBuilder = new SqliteConnectionStringBuilder();
-        connectionStringBuilder.DataSource = "dane.db";
-        String sql = "SELECT * FROM dane;";
-
-        List<int> numery = new List<int>();
-        List<String> wiadomosci = new List<String>();
-
-        using (var connection = new SqliteConnection(connectionStringBuilder.ConnectionString))
-        {
-            connection.Open();
-            using (var command = new SqliteCommand(sql, connection))
-            {
-                using (SqliteDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        numery.Add(reader.GetInt32(0));
-                        wiadomosci.Add(reader.GetString(1));
-                    }
-                }
-            }
-        }
-
-        ViewData["numer_wpisu"] = numery;
-        ViewData["wpis"] = wiadomosci;
-
-        return View();
-    }
-
     [Route("logout/")]
     public IActionResult Logout()
     {

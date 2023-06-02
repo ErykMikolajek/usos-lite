@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MvcPracownik.Data;
 using Microsoft.Data.Sqlite;
+using MvcPracownik.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<MvcPracownikContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("MvcPracownikContext") ?? throw new InvalidOperationException("Connection string 'MvcPracownikContext' not found.")));
@@ -44,12 +46,56 @@ builder.Services.AddSession(options =>
 var app = builder.Build();
 
 
-// app.MapGet("/informacje", () =>
-//     new Informacja{
-//         Dane = "Akuku!",
-//         Id = 1,
-//         Priorytetowa = true
-//     });
+//endpoint metody GET, przesyła listę wszystkich obiektów Informacja
+app.MapGet("/budynki", async (MvcPracownikContext db) =>
+    await db.Budynek.ToListAsync());
+
+//endpoint metody GET, pobiera obiekt Informacja o wybranym id
+app.MapGet("/budynki/{id}", async (int id, MvcPracownikContext db) =>
+    await db.Budynek.FindAsync(id)
+        is Budynek budynek
+            ? Results.Ok(budynek)
+            : Results.NotFound());
+
+//endpoint metody POST, dodaje obiekt Informacja, pole klucza głównego (id) ma autoinkrement
+app.MapPost("/budynki", async (Budynek bud, MvcPracownikContext db) =>
+{
+    db.Budynek.Add(bud);
+    await db.SaveChangesAsync();
+
+    return Results.Created($"/budynki/{bud.Id_budynku}", bud);
+});
+
+//endpoint metody PUT, modyfikuje obiekt o podanym id
+app.MapPut("/budynki/{id}", async (int id, Budynek inputInformacja, MvcPracownikContext db) =>
+{
+    var informacja = await db.Budynek.FindAsync(id);
+
+    if (informacja is null) return Results.NotFound();
+
+    informacja.Nazwa = inputInformacja.Nazwa;
+
+    await db.SaveChangesAsync();
+
+    return Results.NoContent();
+});
+
+//endpoint metody DELETE, usuwa obiekt o podanym id
+app.MapDelete("/budynki/{id}", async (int id, MvcPracownikContext db) =>
+{
+    if (await db.Budynek.FindAsync(id) is Budynek informacja)
+    {
+        Console.WriteLine("################");
+        Console.WriteLine(informacja.Nazwa);
+        Console.WriteLine("################");
+        db.Budynek.Remove(informacja);
+        await db.SaveChangesAsync();
+        return Results.Ok(informacja);
+    }
+
+    return Results.NotFound();
+});
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
