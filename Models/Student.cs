@@ -13,7 +13,7 @@ namespace MvcPracownik.Models
 
         [Display(Name = "Data rozpoczecia studiow")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime DataZatrudnienia { get; set; }
-        public ICollection<Zajecia> ?Zajecia { get; set; }
+        public DateTime DataOfStudiesStart { get; set; }
+        public ICollection<Student_Zajecia> ?student_Zajecia { get; set; }
     }
 }

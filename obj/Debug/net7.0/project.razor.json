@@ -18645,6 +18645,16 @@
   "RootNamespace": "lab10",
   "Documents": [
     {
+      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Student_Zajecia/Edit.cshtml",
+      "TargetPath": "Views\\Student_Zajecia\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Pracownik/Delete.cshtml",
+      "TargetPath": "Views\\Pracownik\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Budynek/Delete.cshtml",
       "TargetPath": "Views\\Budynek\\Delete.cshtml",
       "FileKind": "mvc"
@@ -18655,18 +18665,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Authentication/Register.cshtml",
-      "TargetPath": "Views\\Authentication\\Register.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/USOS/Create.cshtml",
-      "TargetPath": "Views\\USOS\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -18675,8 +18675,23 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/USOS/Delete.cshtml",
-      "TargetPath": "Views\\USOS\\Delete.cshtml",
+      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Student_Zajecia/Index.cshtml",
+      "TargetPath": "Views\\Student_Zajecia\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Student/Details.cshtml",
+      "TargetPath": "Views\\Student\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Auth/Register.cshtml",
+      "TargetPath": "Views\\Auth\\Register.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Student/Create.cshtml",
+      "TargetPath": "Views\\Student\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -18685,8 +18700,18 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Authentication/login.cshtml",
-      "TargetPath": "Views\\Authentication\\login.cshtml",
+      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Student/Edit.cshtml",
+      "TargetPath": "Views\\Student\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Pracownik/Index.cshtml",
+      "TargetPath": "Views\\Pracownik\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Student/Delete.cshtml",
+      "TargetPath": "Views\\Student\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -18705,13 +18730,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/USOS/Details.cshtml",
-      "TargetPath": "Views\\USOS\\Details.cshtml",
+      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Home/Wyswietl.cshtml",
+      "TargetPath": "Views\\Home\\Wyswietl.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Home/Wyswietl.cshtml",
-      "TargetPath": "Views\\Home\\Wyswietl.cshtml",
+      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Student_Zajecia/Create.cshtml",
+      "TargetPath": "Views\\Student_Zajecia\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -18720,8 +18745,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Pracownik/Edit.cshtml",
+      "TargetPath": "Views\\Pracownik\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Shared/_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Pracownik/Details.cshtml",
+      "TargetPath": "Views\\Pracownik\\Details.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -18735,8 +18770,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/USOS/Index.cshtml",
-      "TargetPath": "Views\\USOS\\Index.cshtml",
+      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Student/Index.cshtml",
+      "TargetPath": "Views\\Student\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -18750,8 +18785,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/USOS/Edit.cshtml",
-      "TargetPath": "Views\\USOS\\Edit.cshtml",
+      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Pracownik/Create.cshtml",
+      "TargetPath": "Views\\Pracownik\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Auth/Login.cshtml",
+      "TargetPath": "Views\\Auth\\Login.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -18765,8 +18805,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Student_Zajecia/Delete.cshtml",
+      "TargetPath": "Views\\Student_Zajecia\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Budynek/Create.cshtml",
       "TargetPath": "Views\\Budynek\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Student_Zajecia/Details.cshtml",
+      "TargetPath": "Views\\Student_Zajecia\\Details.cshtml",
       "FileKind": "mvc"
     }
   ],

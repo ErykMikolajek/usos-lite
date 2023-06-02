@@ -1,4 +1,4 @@
-@model MvcPracownik.Models.Zajecia
+@model MvcPracownik.Models.Student_Zajecia
 
 @{
     ViewData["Title"] = "Create";
@@ -6,18 +6,14 @@
 
 <h1>Create</h1>
 
-<h4>Zajecia</h4>
+<h4>Student_Zajecia</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Nazwa" class="control-label"></label>
-                <input asp-for="Nazwa" class="form-control" />
-                <span asp-validation-for="Nazwa" class="text-danger"></span>
-            </div>
-            @Html.DropDownList("BudynekDropDown",(SelectList)ViewBag.BudynekId)
+            @Html.DropDownList("ZajeciaDropDown",(SelectList)ViewBag.ZajeciaID)
+            @Html.DropDownList("StudentDropDown",(SelectList)ViewBag.StudentID)
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
