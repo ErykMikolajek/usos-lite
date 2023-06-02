@@ -47,27 +47,27 @@ var app = builder.Build();
 
 
 //endpoint metody GET, przesyła listę wszystkich obiektów Informacja
-app.MapGet("/budynki", async (MvcPracownikContext db) =>
+app.MapGet("api/budynki", async (MvcPracownikContext db) =>
     await db.Budynek.ToListAsync());
 
 //endpoint metody GET, pobiera obiekt Informacja o wybranym id
-app.MapGet("/budynki/{id}", async (int id, MvcPracownikContext db) =>
+app.MapGet("api/budynki/{id}", async (int id, MvcPracownikContext db) =>
     await db.Budynek.FindAsync(id)
         is Budynek budynek
             ? Results.Ok(budynek)
             : Results.NotFound());
 
 //endpoint metody POST, dodaje obiekt Informacja, pole klucza głównego (id) ma autoinkrement
-app.MapPost("/budynki", async (Budynek bud, MvcPracownikContext db) =>
+app.MapPost("api/budynki", async (Budynek bud, MvcPracownikContext db) =>
 {
     db.Budynek.Add(bud);
     await db.SaveChangesAsync();
 
-    return Results.Created($"/budynki/{bud.Id_budynku}", bud);
+    return Results.Created($"api/budynki/{bud.Id_budynku}", bud);
 });
 
 //endpoint metody PUT, modyfikuje obiekt o podanym id
-app.MapPut("/budynki/{id}", async (int id, Budynek inputInformacja, MvcPracownikContext db) =>
+app.MapPut("api/budynki/{id}", async (int id, Budynek inputInformacja, MvcPracownikContext db) =>
 {
     var informacja = await db.Budynek.FindAsync(id);
 
@@ -81,13 +81,10 @@ app.MapPut("/budynki/{id}", async (int id, Budynek inputInformacja, MvcPracownik
 });
 
 //endpoint metody DELETE, usuwa obiekt o podanym id
-app.MapDelete("/budynki/{id}", async (int id, MvcPracownikContext db) =>
+app.MapDelete("api/budynki/{id}", async (int id, MvcPracownikContext db) =>
 {
     if (await db.Budynek.FindAsync(id) is Budynek informacja)
     {
-        Console.WriteLine("################");
-        Console.WriteLine(informacja.Nazwa);
-        Console.WriteLine("################");
         db.Budynek.Remove(informacja);
         await db.SaveChangesAsync();
         return Results.Ok(informacja);
