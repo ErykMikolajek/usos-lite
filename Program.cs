@@ -57,23 +57,23 @@ var app = builder.Build();
 app.MapGet("api/{token}/budynki", async (String token, MvcPracownikContext db) =>
     await db.Budynek.ToListAsync());
 //endpoint metody GET, pobiera obiekt Informacja o wybranym id
-app.MapGet("api/budynki/{id}", async (int id, MvcPracownikContext db) =>
+app.MapGet("api/{token}/budynki/{id}", async (String token, int id, MvcPracownikContext db) =>
     await db.Budynek.FindAsync(id)
         is Budynek budynek
             ? Results.Ok(budynek)
             : Results.NotFound());
 
 //endpoint metody POST, dodaje obiekt Informacja, pole klucza głównego (id) ma autoinkrement
-app.MapPost("api/budynki", async (Budynek bud, MvcPracownikContext db) =>
+app.MapPost("api/{token}/budynki", async (String token, Budynek bud, MvcPracownikContext db) =>
 {
     db.Budynek.Add(bud);
     await db.SaveChangesAsync();
 
-    return Results.Created($"api/budynki/{bud.Id_budynku}", bud);
+    return Results.Created($"api/{token}/budynki/{bud.Id_budynku}", bud);
 });
 
 //endpoint metody PUT, modyfikuje obiekt o podanym id
-app.MapPut("api/budynki/{id}", async (int id, Budynek inputInformacja, MvcPracownikContext db) =>
+app.MapPut("api/{token}/budynki/{id}", async (String token, int id, Budynek inputInformacja, MvcPracownikContext db) =>
 {
     var informacja = await db.Budynek.FindAsync(id);
 
@@ -87,7 +87,7 @@ app.MapPut("api/budynki/{id}", async (int id, Budynek inputInformacja, MvcPracow
 });
 
 //endpoint metody DELETE, usuwa obiekt o podanym id
-app.MapDelete("api/budynki/{id}", async (int id, MvcPracownikContext db) =>
+app.MapDelete("api/{token}/budynki/{id}", async (String token, int id, MvcPracownikContext db) =>
 {
     if (await db.Budynek.FindAsync(id) is Budynek informacja)
     {
@@ -102,26 +102,26 @@ app.MapDelete("api/budynki/{id}", async (int id, MvcPracownikContext db) =>
 //STUDENCI:
 
 //endpoint metody GET, przesyła listę wszystkich obiektów Informacja
-app.MapGet("api/studenci", async (MvcPracownikContext db) =>
+app.MapGet("api/{token}/studenci", async (String token, MvcPracownikContext db) =>
     await db.Student.ToListAsync());
 //endpoint metody GET, pobiera obiekt Informacja o wybranym id
-app.MapGet("api/studenci/{id}", async (int id, MvcPracownikContext db) =>
+app.MapGet("api/{token}/studenci/{id}", async (String token, int id, MvcPracownikContext db) =>
     await db.Student.FindAsync(id)
         is Student student
             ? Results.Ok(student)
             : Results.NotFound());
 
 //endpoint metody POST, dodaje obiekt Informacja, pole klucza głównego (id) ma autoinkrement
-app.MapPost("api/studenci", async (Student stud, MvcPracownikContext db) =>
+app.MapPost("api/{token}/studenci", async (String token, Student stud, MvcPracownikContext db) =>
 {
     db.Student.Add(stud);
     await db.SaveChangesAsync();
 
-    return Results.Created($"api/studenci/{stud.Id}", stud);
+    return Results.Created($"api/{token}/studenci/{stud.Id}", stud);
 });
 
 //endpoint metody PUT, modyfikuje obiekt o podanym id
-app.MapPut("api/studenci/{id}", async (int id, Student inputInformacja, MvcPracownikContext db) =>
+app.MapPut("api/{token}/studenci/{id}", async (String token, int id, Student inputInformacja, MvcPracownikContext db) =>
 {
     var informacja = await db.Student.FindAsync(id);
 
@@ -137,7 +137,7 @@ app.MapPut("api/studenci/{id}", async (int id, Student inputInformacja, MvcPraco
 });
 
 //endpoint metody DELETE, usuwa obiekt o podanym id
-app.MapDelete("api/studenci/{id}", async (int id, MvcPracownikContext db) =>
+app.MapDelete("api/{token}/studenci/{id}", async (String token, int id, MvcPracownikContext db) =>
 {
     if (await db.Student.FindAsync(id) is Student informacja)
     {
@@ -152,26 +152,26 @@ app.MapDelete("api/studenci/{id}", async (int id, MvcPracownikContext db) =>
 //PRACOWNICY:
 
 //endpoint metody GET, przesyła listę wszystkich obiektów Informacja
-app.MapGet("api/pracownicy", async (MvcPracownikContext db) =>
+app.MapGet("api/{token}/pracownicy", async (String token, MvcPracownikContext db) =>
     await db.Pracownik.ToListAsync());
 //endpoint metody GET, pobiera obiekt Informacja o wybranym id
-app.MapGet("api/pracownicy/{id}", async (int id, MvcPracownikContext db) =>
+app.MapGet("api/{token}/pracownicy/{id}", async (String token, int id, MvcPracownikContext db) =>
     await db.Pracownik.FindAsync(id)
         is Pracownik pracownik
             ? Results.Ok(pracownik)
             : Results.NotFound());
 
 //endpoint metody POST, dodaje obiekt Informacja, pole klucza głównego (id) ma autoinkrement
-app.MapPost("api/pracownicy", async (Pracownik stud, MvcPracownikContext db) =>
+app.MapPost("api/{token}/pracownicy", async (String token, Pracownik stud, MvcPracownikContext db) =>
 {
     db.Pracownik.Add(stud);
     await db.SaveChangesAsync();
 
-    return Results.Created($"api/pracownicy/{stud.Id}", stud);
+    return Results.Created($"api/{token}/pracownicy/{stud.Id}", stud);
 });
 
 //endpoint metody PUT, modyfikuje obiekt o podanym id
-app.MapPut("api/pracownicy/{id}", async (int id, Pracownik inputInformacja, MvcPracownikContext db) =>
+app.MapPut("api/{token}/pracownicy/{id}", async (String token, int id, Pracownik inputInformacja, MvcPracownikContext db) =>
 {
     var informacja = await db.Pracownik.FindAsync(id);
 
@@ -188,7 +188,7 @@ app.MapPut("api/pracownicy/{id}", async (int id, Pracownik inputInformacja, MvcP
 });
 
 //endpoint metody DELETE, usuwa obiekt o podanym id
-app.MapDelete("api/pracownicy/{id}", async (int id, MvcPracownikContext db) =>
+app.MapDelete("api/{token}/pracownicy/{id}", async (String token, int id, MvcPracownikContext db) =>
 {
     if (await db.Pracownik.FindAsync(id) is Pracownik informacja)
     {
@@ -203,26 +203,26 @@ app.MapDelete("api/pracownicy/{id}", async (int id, MvcPracownikContext db) =>
 //ZAJECIA:
 
 //endpoint metody GET, przesyła listę wszystkich obiektów Informacja
-app.MapGet("api/zajecia", async (MvcPracownikContext db) =>
+app.MapGet("api/{token}/zajecia", async (String token, MvcPracownikContext db) =>
     await db.Zajecia.ToListAsync());
 //endpoint metody GET, pobiera obiekt Informacja o wybranym id
-app.MapGet("api/zajecia/{id}", async (int id, MvcPracownikContext db) =>
+app.MapGet("api/{token}/zajecia/{id}", async (String token, int id, MvcPracownikContext db) =>
     await db.Zajecia.FindAsync(id)
         is Zajecia zaj
             ? Results.Ok(zaj)
             : Results.NotFound());
 
 //endpoint metody POST, dodaje obiekt Informacja, pole klucza głównego (id) ma autoinkrement
-app.MapPost("api/zajecia", async (Zajecia zaj, MvcPracownikContext db) =>
+app.MapPost("api/{token}/zajecia", async (String token, Zajecia zaj, MvcPracownikContext db) =>
 {
     db.Zajecia.Add(zaj);
     await db.SaveChangesAsync();
 
-    return Results.Created($"api/zajecia/{zaj.Id_zajec}", zaj);
+    return Results.Created($"api/{token}/zajecia/{zaj.Id_zajec}", zaj);
 });
 
 //endpoint metody PUT, modyfikuje obiekt o podanym id
-app.MapPut("api/zajecia/{id}", async (int id, Zajecia inputInformacja, MvcPracownikContext db) =>
+app.MapPut("api/{token}/zajecia/{id}", async (String token, int id, Zajecia inputInformacja, MvcPracownikContext db) =>
 {
     var informacja = await db.Zajecia.FindAsync(id);
 
@@ -239,7 +239,7 @@ app.MapPut("api/zajecia/{id}", async (int id, Zajecia inputInformacja, MvcPracow
 });
 
 //endpoint metody DELETE, usuwa obiekt o podanym id
-app.MapDelete("api/zajecia/{id}", async (int id, MvcPracownikContext db) =>
+app.MapDelete("api/{token}/zajecia/{id}", async (String token, int id, MvcPracownikContext db) =>
 {
     if (await db.Zajecia.FindAsync(id) is Zajecia informacja)
     {
