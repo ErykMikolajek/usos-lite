@@ -33,6 +33,8 @@ namespace lab10.Controllers
         // GET: Budynek/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
             if (id == null || _context.Budynek == null)
             {
                 return NotFound();
@@ -51,7 +53,10 @@ namespace lab10.Controllers
         // GET: Budynek/Create
         public IActionResult Create()
         {
-            return View();
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
+            else 
+                return View();
         }
 
         // POST: Budynek/Create
@@ -61,6 +66,8 @@ namespace lab10.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id_budynku,Nazwa")] Budynek budynek)
         {
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
             if (ModelState.IsValid)
             {
                 _context.Add(budynek);
@@ -73,6 +80,8 @@ namespace lab10.Controllers
         // GET: Budynek/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
             if (id == null || _context.Budynek == null)
             {
                 return NotFound();
@@ -93,6 +102,8 @@ namespace lab10.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id_budynku,Nazwa")] Budynek budynek)
         {
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
             if (id != budynek.Id_budynku)
             {
                 return NotFound();
@@ -124,6 +135,8 @@ namespace lab10.Controllers
         // GET: Budynek/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
             if (id == null || _context.Budynek == null)
             {
                 return NotFound();
@@ -144,6 +157,8 @@ namespace lab10.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
             if (_context.Budynek == null)
             {
                 return Problem("Entity set 'MvcPracownikContext.Budynek'  is null.");

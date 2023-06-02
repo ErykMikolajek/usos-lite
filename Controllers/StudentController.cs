@@ -37,6 +37,8 @@ namespace lab10.Controllers
         // GET: Student/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
             if (id == null || _context.Student == null)
             {
                 return NotFound();
@@ -55,7 +57,10 @@ namespace lab10.Controllers
         // GET: Student/Create
         public IActionResult Create()
         {
-            return View();
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
+            else 
+                return View();
         }
 
         // POST: Student/Create
@@ -65,6 +70,8 @@ namespace lab10.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Imie,Nazwisko,DataOfStudiesStart")] Student student)
         {
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
             if (ModelState.IsValid)
             {
                 _context.Add(student);
@@ -77,6 +84,8 @@ namespace lab10.Controllers
         // GET: Student/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
             if (id == null || _context.Student == null)
             {
                 return NotFound();
@@ -97,6 +106,8 @@ namespace lab10.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Imie,Nazwisko,DataOfStudiesStart")] Student student)
         {
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
             if (id != student.Id)
             {
                 return NotFound();
@@ -128,6 +139,8 @@ namespace lab10.Controllers
         // GET: Student/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
             if (id == null || _context.Student == null)
             {
                 return NotFound();
@@ -148,6 +161,8 @@ namespace lab10.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
             if (_context.Student == null)
             {
                 return Problem("Entity set 'MvcPracownikContext.Student'  is null.");

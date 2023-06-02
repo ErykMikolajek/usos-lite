@@ -31,6 +31,8 @@ namespace lab10.Controllers
         // GET: Zajecia/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
             if (id == null || _context.Zajecia == null)
             {
                 return NotFound();
@@ -50,6 +52,8 @@ namespace lab10.Controllers
         // GET: Zajecia/Create
         public IActionResult Create()
         {
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
             PopulateBudynekDropDownList();
             return View();
         }
@@ -62,6 +66,8 @@ namespace lab10.Controllers
         public async Task<IActionResult> Create([Bind("Id_zajec,Nazwa")] Zajecia zajecia,
             IFormCollection form)
         {
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
             string budynekValue = form["BudynekDropDown"];
             if (ModelState.IsValid)
             {
@@ -85,6 +91,8 @@ namespace lab10.Controllers
         // GET: Zajecia/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
             if (id == null || _context.Zajecia == null)
             {
                 return NotFound();
@@ -115,6 +123,8 @@ namespace lab10.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id_zajec,Nazwa")] Zajecia zajecia, IFormCollection form)
         {
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
             if (id != zajecia.Id_zajec)
             {
                 return NotFound();
@@ -169,6 +179,8 @@ namespace lab10.Controllers
         // GET: Zajecia/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
             if (id == null || _context.Zajecia == null)
             {
                 return NotFound();
@@ -191,6 +203,8 @@ namespace lab10.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
             if (_context.Zajecia == null)
             {
                 return Problem("Entity set 'MvcPracownikContext.Zajecia'  is null.");
