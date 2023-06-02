@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/jakubkubicki/Desktop/PZ2/usos-lite/lab10.csproj": {}
+    "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/lab10.csproj": {}
   },
   "projects": {
-    "/Users/jakubkubicki/Desktop/PZ2/usos-lite/lab10.csproj": {
+    "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/lab10.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/jakubkubicki/Desktop/PZ2/usos-lite/lab10.csproj",
+        "projectUniqueName": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/lab10.csproj",
         "projectName": "lab10",
-        "projectPath": "/Users/jakubkubicki/Desktop/PZ2/usos-lite/lab10.csproj",
-        "packagesPath": "/Users/jakubkubicki/.nuget/packages/",
-        "outputPath": "/Users/jakubkubicki/Desktop/PZ2/usos-lite/obj/",
+        "projectPath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/lab10.csproj",
+        "packagesPath": "/Users/eryk/.nuget/packages/",
+        "outputPath": "/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/jakubkubicki/.nuget/NuGet/NuGet.Config"
+          "/Users/eryk/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"

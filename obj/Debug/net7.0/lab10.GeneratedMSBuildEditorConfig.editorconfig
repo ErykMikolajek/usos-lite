@@ -9,105 +9,109 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = lab10
 build_property.RootNamespace = lab10
-build_property.ProjectDir = /Users/jakubkubicki/Desktop/PZ2/usos-lite/
+build_property.ProjectDir = /Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/jakubkubicki/Desktop/PZ2/usos-lite
+build_property.MSBuildProjectDirectory = /Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Budynek/Create.cshtml]
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Auth/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXV0aC9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Auth/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXV0aC9SZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Budynek/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQnVkeW5lay9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Budynek/Delete.cshtml]
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Budynek/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQnVkeW5lay9EZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Budynek/Details.cshtml]
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Budynek/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQnVkeW5lay9EZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Budynek/Edit.cshtml]
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Budynek/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQnVkeW5lay9FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Budynek/Index.cshtml]
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Budynek/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQnVkeW5lay9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Home/HomePage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Ib21lUGFnZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Home/Index.cshtml]
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Home/Privacy.cshtml]
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Home/Wyswietl.cshtml]
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Home/Wyswietl.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9XeXN3aWV0bC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Shared/Error.cshtml]
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Shared/_ValidationScriptsPartial.cshtml]
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/USOS/Create.cshtml]
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/USOS/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVVNPUy9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/USOS/Delete.cshtml]
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/USOS/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVVNPUy9EZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/USOS/Details.cshtml]
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/USOS/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVVNPUy9EZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/USOS/Edit.cshtml]
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/USOS/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVVNPUy9FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/USOS/Index.cshtml]
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/USOS/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVVNPUy9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Zajecia/Create.cshtml]
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Zajecia/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvWmFqZWNpYS9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Zajecia/Delete.cshtml]
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Zajecia/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvWmFqZWNpYS9EZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Zajecia/Details.cshtml]
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Zajecia/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvWmFqZWNpYS9EZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Zajecia/Edit.cshtml]
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Zajecia/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvWmFqZWNpYS9FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Zajecia/Index.cshtml]
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Zajecia/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvWmFqZWNpYS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/_ViewImports.cshtml]
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/_ViewStart.cshtml]
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/jakubkubicki/Desktop/PZ2/usos-lite/Views/Shared/_Layout.cshtml]
+[/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-9aqsnj3hpe

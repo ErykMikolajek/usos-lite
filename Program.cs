@@ -1,9 +1,33 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MvcPracownik.Data;
+using Microsoft.Data.Sqlite;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<MvcPracownikContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("MvcPracownikContext") ?? throw new InvalidOperationException("Connection string 'MvcPracownikContext' not found.")));
+
+var connectionStringBuilder = new SqliteConnectionStringBuilder();
+connectionStringBuilder.DataSource = "loginy.db";
+
+String sqlQueryForExistingUser = "SELECT login FROM loginy WHERE login='admin';";
+using (var connection = new SqliteConnection(connectionStringBuilder.ConnectionString))
+{
+    connection.Open();
+    using (var command = new SqliteCommand(sqlQueryForExistingUser, connection))
+    {
+        using (SqliteDataReader reader = command.ExecuteReader())
+        {
+            if (!reader.Read())
+            {
+                String sql = "INSERT INTO loginy (login, haslo) VALUES ('admin', '21232f297a57a5a743894a0e4a801fc3');";
+                using (var command2 = new SqliteCommand(sql, connection))
+                {
+                    command2.ExecuteNonQuery();
+                }
+            }
+        }
+    }
+}
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -18,6 +42,14 @@ builder.Services.AddSession(options =>
 });
 
 var app = builder.Build();
+
+
+// app.MapGet("/informacje", () =>
+//     new Informacja{
+//         Dane = "Akuku!",
+//         Id = 1,
+//         Priorytetowa = true
+//     });
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
