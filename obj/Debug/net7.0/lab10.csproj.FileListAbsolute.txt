@@ -365,3 +365,5 @@
 /Users/jakubkubicki/Desktop/PZ2/usos-lite/bin/Debug/net7.0/runtimes/win/lib/netstandard2.0/System.Runtime.Caching.dll
 /Users/jakubkubicki/Desktop/PZ2/usos-lite/bin/Debug/net7.0/runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll
 /Users/jakubkubicki/Desktop/PZ2/usos-lite/bin/Debug/net7.0/runtimes/win/lib/net6.0/System.Windows.Extensions.dll
+/Users/jakubkubicki/Desktop/PZ2/usos-lite/bin/Debug/net7.0/lab10.xml
+/Users/jakubkubicki/Desktop/PZ2/usos-lite/obj/Debug/net7.0/lab10.xml

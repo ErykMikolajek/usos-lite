@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>lab10</name>
+    </assembly>
+    <members>
+        <member name="T:lab10.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:lab10.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:lab10.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:lab10.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="P:MvcPracownik.Models.Budynek.Id_budynku">
+            <summary>
+            This is a summary of the method.
+            </summary>
+            <param name="param1">Description of parameter 1.</param>
+            <returns>Explanation of the return value.</returns>
+        </member>
+    </members>
+</doc>
