@@ -1,7 +1,7 @@
 # Usos lite
 Simple C# web application using ASP.NET Core MVC technology with REST API
 
-### You can run application using command dotnet run 
+### You can run application using command 'dotnet run' and opening localhost on port selected by dotnet  
 
 ---
 
