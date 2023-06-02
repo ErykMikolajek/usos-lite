@@ -8,10 +8,15 @@ Our application allows to manage a college database that store lecturers and stu
 We've got 5 classes:
 
 ## Zajecia
+you can add new lecturers and select its building
 ## Student
+you can add new student 
 ## Pracownik
+you can add new instructor and select lectures 
 ## Student_zajecia ( klasa lącząca studenta i zajecia)
+you can connect student entity with zajecia entity 
 ## Budynek
+you can add new building 
 
 Pondto do każdego modelu sa stworzone widoki ( Views ) do których odwołanie jest w formie przycisków na stronie webowej
 
