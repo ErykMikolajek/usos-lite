@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Create new account</h1>
+    <form action="/register" method="post">  
+        <div class="container">   
+            </br>
+            </br>
+            <label>Username: </label>   
+            <input type="text" placeholder="Enter Username" name="ulogin" required>  
+            </br>
+            </br>
+            <label>Password: </label>   
+            <input type="password" placeholder="Enter Password" name="uhaslo" required>  
+            </br>
+            </br>
+            @* <label>Confirm Password: </label>
+            <input type="password" placeholder="Confirm Password" name="uhaslo2" required>
+            </br>
+            </br> *@
+            <button type="submit">Register</button>  
+        </div>   
+    </form>     
+</div>
+@Html.Raw(TempData["msg"])
+
+
+<div class="text-center" style="margin-top: 100px">
+    Already have an account?
+    <a asp-controller="Auth" asp-action="LoginScreen">Log in</a>
+</div>

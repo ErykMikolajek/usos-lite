@@ -22,6 +22,8 @@ namespace lab10.Controllers
         // GET: Pracownik
         public async Task<IActionResult> Index()
         {
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
             var prac = _context.Pracownik.Include(p => p.Zajecia).AsNoTracking();
             return View(await prac.ToListAsync());
         }
@@ -114,56 +116,56 @@ namespace lab10.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("Id,Imie,Nazwisko,DataZatrudnienia")] Pracownik pracownik, IFormCollection form)
         {
             if (id != pracownik.Id)
+            {
+                return NotFound();
+            }
+
+
+            if (ModelState.IsValid)
+            {
+                try
                 {
-                    return NotFound();
+                    string zajeciaValue = form["ZajeciaDropDown"];
+
+
+                    Zajecia zajecia = null;
+                    if (zajeciaValue != "-1")
+                    {
+                        var ee = _context.Zajecia.Where(e => e.Id_zajec == int.Parse(zajeciaValue));
+                        if (ee.Count() > 0)
+                            zajecia = ee.First();
+                    }
+                    pracownik.Zajecia = zajecia;
+
+                    //Aby kontekst śledził zmiany w referowanych kolumnach etat oraz zespol
+                    //należy "dostać" się do obiektu przez dbContext i dołączyć obiekty etat
+                    //i zespol. Bez tego kolumny etat i zespół nie będą mogły być zmodyfikowane
+                    //wartością NULL-ową, czyli nie będzie się dało usunąć powiązania. 
+                    //Ustawienie na inną wartość niż NULL będzie działać przy "zwykłym"
+                    // _context.Update(pracownik);
+                    Pracownik pp = _context.Pracownik.Where(p => p.Id == id)
+                    .Include(p => p.Zajecia)
+                    .First();
+                    pp.Zajecia = zajecia;
+                    pp.Imie = pracownik.Imie;
+                    pp.Nazwisko = pracownik.Nazwisko;
+                    pp.DataZatrudnienia = pracownik.DataZatrudnienia;
+
+                    await _context.SaveChangesAsync();
                 }
-
-
-                if (ModelState.IsValid)
+                catch (DbUpdateConcurrencyException)
                 {
-                    try
+                    if (!PracownikExists(pracownik.Id))
                     {
-                        string zajeciaValue = form["ZajeciaDropDown"];
-
-
-                        Zajecia zajecia = null;
-                        if (zajeciaValue != "-1")
-                        {
-                            var ee = _context.Zajecia.Where(e => e.Id_zajec == int.Parse(zajeciaValue));
-                            if (ee.Count() > 0)
-                                zajecia = ee.First();
-                        }
-                        pracownik.Zajecia = zajecia;
-
-                        //Aby kontekst śledził zmiany w referowanych kolumnach etat oraz zespol
-                        //należy "dostać" się do obiektu przez dbContext i dołączyć obiekty etat
-                        //i zespol. Bez tego kolumny etat i zespół nie będą mogły być zmodyfikowane
-                        //wartością NULL-ową, czyli nie będzie się dało usunąć powiązania. 
-                        //Ustawienie na inną wartość niż NULL będzie działać przy "zwykłym"
-                        // _context.Update(pracownik);
-                        Pracownik pp = _context.Pracownik.Where(p => p.Id == id)
-                        .Include(p => p.Zajecia)
-                        .First();
-                        pp.Zajecia = zajecia;
-                        pp.Imie = pracownik.Imie;
-                        pp.Nazwisko = pracownik.Nazwisko;
-                        pp.DataZatrudnienia = pracownik.DataZatrudnienia;
-
-                        await _context.SaveChangesAsync();
+                        return NotFound();
                     }
-                    catch (DbUpdateConcurrencyException)
+                    else
                     {
-                        if (!PracownikExists(pracownik.Id))
-                        {
-                            return NotFound();
-                        }
-                        else
-                        {
-                            throw;
-                        }
+                        throw;
                     }
-                    return RedirectToAction(nameof(Index));
                 }
+                return RedirectToAction(nameof(Index));
+            }
             return View(pracownik);
         }
 
@@ -201,21 +203,21 @@ namespace lab10.Controllers
             {
                 _context.Pracownik.Remove(pracownik);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool PracownikExists(int id)
         {
-          return (_context.Pracownik?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Pracownik?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
-        private void PopulateZajeciaDropDownList(object selectedZajecia = null) 
+        private void PopulateZajeciaDropDownList(object selectedZajecia = null)
         {
             var wybraneZajecia = from z in _context.Zajecia
-                                orderby z.Nazwa
-                                select z;
+                                 orderby z.Nazwa
+                                 select z;
             var res = wybraneZajecia.AsNoTracking();
             ViewBag.ZajeciaID = new SelectList(res, "Id_zajec", "Nazwa", selectedZajecia);
         }

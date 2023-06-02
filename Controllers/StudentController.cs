@@ -22,9 +22,16 @@ namespace lab10.Controllers
         // GET: Student
         public async Task<IActionResult> Index()
         {
-              return _context.Student != null ? 
-                          View(await _context.Student.ToListAsync()) :
-                          Problem("Entity set 'MvcPracownikContext.Student'  is null.");
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
+
+            var result = _context.Student_Zajecia.Select(x => new { x.student.Id, x.zajecia.Nazwa }).ToList();
+            ViewBag.Student_Zajecia_data = result;
+
+
+            return _context.Student != null ?
+                        View(await _context.Student.ToListAsync()) :
+                        Problem("Entity set 'MvcPracownikContext.Student'  is null.");
         }
 
         // GET: Student/Details/5
@@ -150,14 +157,14 @@ namespace lab10.Controllers
             {
                 _context.Student.Remove(student);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool StudentExists(int id)
         {
-          return (_context.Student?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Student?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
