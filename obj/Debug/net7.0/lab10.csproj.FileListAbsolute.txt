@@ -668,3 +668,8 @@
 /Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/obj/Debug/net7.0/lab10.pdb
 /Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/obj/Debug/net7.0/lab10.genruntimeconfig.cache
 /Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/obj/Debug/net7.0/ref/lab10.dll
+/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/bin/Debug/net7.0/Microsoft.OpenApi.dll
+/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/bin/Debug/net7.0/Swashbuckle.AspNetCore.Swagger.dll
+/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/bin/Debug/net7.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/bin/Debug/net7.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/Users/eryk/Documents/Programowanie Zaawansowane 2/usos-lite/obj/Debug/net7.0/lab10.MvcApplicationPartsAssemblyInfo.cs

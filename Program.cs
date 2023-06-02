@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MvcPracownik.Data;
 using Microsoft.Data.Sqlite;
 using MvcPracownik.Models;
+using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<MvcPracownikContext>(options =>
@@ -43,13 +44,18 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;//pliki cookie sesji będą zapisywane dzięki czemu sesje będzie mogła być śledzona podczas nawigacji lub przeładowania strony
 });
 
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// builder.Services.AddEndpointsApiExplorer();
+// builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
 
+//BUDYNKI:
 
 //endpoint metody GET, przesyła listę wszystkich obiektów Informacja
-app.MapGet("api/budynki", async (MvcPracownikContext db) =>
+app.MapGet("api/{token}/budynki", async (String token, MvcPracownikContext db) =>
     await db.Budynek.ToListAsync());
-
 //endpoint metody GET, pobiera obiekt Informacja o wybranym id
 app.MapGet("api/budynki/{id}", async (int id, MvcPracownikContext db) =>
     await db.Budynek.FindAsync(id)
@@ -93,11 +99,165 @@ app.MapDelete("api/budynki/{id}", async (int id, MvcPracownikContext db) =>
     return Results.NotFound();
 });
 
+//STUDENCI:
+
+//endpoint metody GET, przesyła listę wszystkich obiektów Informacja
+app.MapGet("api/studenci", async (MvcPracownikContext db) =>
+    await db.Student.ToListAsync());
+//endpoint metody GET, pobiera obiekt Informacja o wybranym id
+app.MapGet("api/studenci/{id}", async (int id, MvcPracownikContext db) =>
+    await db.Student.FindAsync(id)
+        is Student student
+            ? Results.Ok(student)
+            : Results.NotFound());
+
+//endpoint metody POST, dodaje obiekt Informacja, pole klucza głównego (id) ma autoinkrement
+app.MapPost("api/studenci", async (Student stud, MvcPracownikContext db) =>
+{
+    db.Student.Add(stud);
+    await db.SaveChangesAsync();
+
+    return Results.Created($"api/studenci/{stud.Id}", stud);
+});
+
+//endpoint metody PUT, modyfikuje obiekt o podanym id
+app.MapPut("api/studenci/{id}", async (int id, Student inputInformacja, MvcPracownikContext db) =>
+{
+    var informacja = await db.Student.FindAsync(id);
+
+    if (informacja is null) return Results.NotFound();
+
+    informacja.Imie = inputInformacja.Imie;
+    informacja.Nazwisko = inputInformacja.Nazwisko;
+    informacja.DataOfStudiesStart = inputInformacja.DataOfStudiesStart;
+
+    await db.SaveChangesAsync();
+
+    return Results.NoContent();
+});
+
+//endpoint metody DELETE, usuwa obiekt o podanym id
+app.MapDelete("api/studenci/{id}", async (int id, MvcPracownikContext db) =>
+{
+    if (await db.Student.FindAsync(id) is Student informacja)
+    {
+        db.Student.Remove(informacja);
+        await db.SaveChangesAsync();
+        return Results.Ok(informacja);
+    }
+
+    return Results.NotFound();
+});
+
+//PRACOWNICY:
+
+//endpoint metody GET, przesyła listę wszystkich obiektów Informacja
+app.MapGet("api/pracownicy", async (MvcPracownikContext db) =>
+    await db.Pracownik.ToListAsync());
+//endpoint metody GET, pobiera obiekt Informacja o wybranym id
+app.MapGet("api/pracownicy/{id}", async (int id, MvcPracownikContext db) =>
+    await db.Pracownik.FindAsync(id)
+        is Pracownik pracownik
+            ? Results.Ok(pracownik)
+            : Results.NotFound());
+
+//endpoint metody POST, dodaje obiekt Informacja, pole klucza głównego (id) ma autoinkrement
+app.MapPost("api/pracownicy", async (Pracownik stud, MvcPracownikContext db) =>
+{
+    db.Pracownik.Add(stud);
+    await db.SaveChangesAsync();
+
+    return Results.Created($"api/pracownicy/{stud.Id}", stud);
+});
+
+//endpoint metody PUT, modyfikuje obiekt o podanym id
+app.MapPut("api/pracownicy/{id}", async (int id, Pracownik inputInformacja, MvcPracownikContext db) =>
+{
+    var informacja = await db.Pracownik.FindAsync(id);
+
+    if (informacja is null) return Results.NotFound();
+
+    informacja.Imie = inputInformacja.Imie;
+    informacja.Nazwisko = inputInformacja.Nazwisko;
+    informacja.DataZatrudnienia = inputInformacja.DataZatrudnienia;
+    informacja.Zajecia = inputInformacja.Zajecia;
+
+    await db.SaveChangesAsync();
+
+    return Results.NoContent();
+});
+
+//endpoint metody DELETE, usuwa obiekt o podanym id
+app.MapDelete("api/pracownicy/{id}", async (int id, MvcPracownikContext db) =>
+{
+    if (await db.Pracownik.FindAsync(id) is Pracownik informacja)
+    {
+        db.Pracownik.Remove(informacja);
+        await db.SaveChangesAsync();
+        return Results.Ok(informacja);
+    }
+
+    return Results.NotFound();
+});
+
+//ZAJECIA:
+
+//endpoint metody GET, przesyła listę wszystkich obiektów Informacja
+app.MapGet("api/zajecia", async (MvcPracownikContext db) =>
+    await db.Zajecia.ToListAsync());
+//endpoint metody GET, pobiera obiekt Informacja o wybranym id
+app.MapGet("api/zajecia/{id}", async (int id, MvcPracownikContext db) =>
+    await db.Zajecia.FindAsync(id)
+        is Zajecia zaj
+            ? Results.Ok(zaj)
+            : Results.NotFound());
+
+//endpoint metody POST, dodaje obiekt Informacja, pole klucza głównego (id) ma autoinkrement
+app.MapPost("api/zajecia", async (Zajecia zaj, MvcPracownikContext db) =>
+{
+    db.Zajecia.Add(zaj);
+    await db.SaveChangesAsync();
+
+    return Results.Created($"api/zajecia/{zaj.Id_zajec}", zaj);
+});
+
+//endpoint metody PUT, modyfikuje obiekt o podanym id
+app.MapPut("api/zajecia/{id}", async (int id, Zajecia inputInformacja, MvcPracownikContext db) =>
+{
+    var informacja = await db.Zajecia.FindAsync(id);
+
+    if (informacja is null) return Results.NotFound();
+
+    informacja.Nazwa = inputInformacja.Nazwa;
+    informacja.Budynek = inputInformacja.Budynek;
+    informacja.student_Zajecia = inputInformacja.student_Zajecia;
+    informacja.Pracownicy = inputInformacja.Pracownicy;
+
+    await db.SaveChangesAsync();
+
+    return Results.NoContent();
+});
+
+//endpoint metody DELETE, usuwa obiekt o podanym id
+app.MapDelete("api/zajecia/{id}", async (int id, MvcPracownikContext db) =>
+{
+    if (await db.Zajecia.FindAsync(id) is Zajecia informacja)
+    {
+        db.Zajecia.Remove(informacja);
+        await db.SaveChangesAsync();
+        return Results.Ok(informacja);
+    }
+
+    return Results.NotFound();
+});
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
+    // app.UseSwagger();
+    // app.UseSwaggerUI();
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }

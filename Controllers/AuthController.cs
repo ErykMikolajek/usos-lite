@@ -68,6 +68,12 @@ public class AuthController : Controller
             hashBuilder.Append(b.ToString("x2"));
         String hasloHash = hashBuilder.ToString();
 
+        hashBuilder = new StringBuilder();
+        byte[] resultToken = hash.ComputeHash(enc.GetBytes(ulogin));
+        foreach (var b in result)
+            hashBuilder.Append(b.ToString("x2"));
+        String token = hashBuilder.ToString();
+
         String sqlQueryForExistingUser = "SELECT login FROM loginy WHERE login='" + ulogin + "';";
         using (var connection = new SqliteConnection(connectionStringBuilder.ConnectionString))
         {
@@ -86,7 +92,7 @@ public class AuthController : Controller
                     }
                     else
                     {
-                        String sql = "INSERT INTO loginy (login, haslo) VALUES ('" + ulogin + "', '" + hasloHash + "');";
+                        String sql = "INSERT INTO loginy (login, haslo, token) VALUES ('" + ulogin + "', '" + hasloHash + "', '" + token + "');";
                         using (var command2 = new SqliteCommand(sql, connection))
                         {
                             command2.ExecuteNonQuery();
