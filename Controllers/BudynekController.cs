@@ -22,9 +22,12 @@ namespace lab10.Controllers
         // GET: Budynek
         public async Task<IActionResult> Index()
         {
-              return _context.Budynek != null ? 
-                          View(await _context.Budynek.ToListAsync()) :
-                          Problem("Entity set 'MvcPracownikContext.Budynek'  is null.");
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
+
+            return _context.Budynek != null ?
+                        View(await _context.Budynek.ToListAsync()) :
+                        Problem("Entity set 'MvcPracownikContext.Budynek'  is null.");
         }
 
         // GET: Budynek/Details/5
@@ -150,14 +153,14 @@ namespace lab10.Controllers
             {
                 _context.Budynek.Remove(budynek);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool BudynekExists(int id)
         {
-          return (_context.Budynek?.Any(e => e.Id_budynku == id)).GetValueOrDefault();
+            return (_context.Budynek?.Any(e => e.Id_budynku == id)).GetValueOrDefault();
         }
     }
 }

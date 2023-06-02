@@ -22,6 +22,8 @@ namespace lab10.Controllers
         // GET: Zajecia
         public async Task<IActionResult> Index()
         {
+            if (HttpContext.Session.GetString("Logged in") == null)
+                return View("Views/Auth/Login.cshtml");
             var zaj = _context.Zajecia.Include(p => p.Budynek).AsNoTracking();
             return View(await zaj.ToListAsync());
         }
@@ -122,31 +124,31 @@ namespace lab10.Controllers
             {
                 try
                 {
-                        string budynekValue = form["BudynekDropDown"];
+                    string budynekValue = form["BudynekDropDown"];
 
 
-                        Budynek budynek = null;
-                        if (budynekValue != "-1")
-                        {
-                            var ee = _context.Budynek.Where(e => e.Id_budynku == int.Parse(budynekValue));
-                            if (ee.Count() > 0)
-                                budynek = ee.First();
-                        }
-                        zajecia.Budynek = budynek;
+                    Budynek budynek = null;
+                    if (budynekValue != "-1")
+                    {
+                        var ee = _context.Budynek.Where(e => e.Id_budynku == int.Parse(budynekValue));
+                        if (ee.Count() > 0)
+                            budynek = ee.First();
+                    }
+                    zajecia.Budynek = budynek;
 
-                        //Aby kontekst śledził zmiany w referowanych kolumnach etat oraz zespol
-                        //należy "dostać" się do obiektu przez dbContext i dołączyć obiekty etat
-                        //i zespol. Bez tego kolumny etat i zespół nie będą mogły być zmodyfikowane
-                        //wartością NULL-ową, czyli nie będzie się dało usunąć powiązania. 
-                        //Ustawienie na inną wartość niż NULL będzie działać przy "zwykłym"
-                        // _context.Update(pracownik);
-                        Zajecia pp = _context.Zajecia.Where(p => p.Id_zajec == id)
-                        .Include(p => p.Budynek)
-                        .First();
-                        pp.Budynek = budynek;
-                        pp.Nazwa = zajecia.Nazwa;
+                    //Aby kontekst śledził zmiany w referowanych kolumnach etat oraz zespol
+                    //należy "dostać" się do obiektu przez dbContext i dołączyć obiekty etat
+                    //i zespol. Bez tego kolumny etat i zespół nie będą mogły być zmodyfikowane
+                    //wartością NULL-ową, czyli nie będzie się dało usunąć powiązania. 
+                    //Ustawienie na inną wartość niż NULL będzie działać przy "zwykłym"
+                    // _context.Update(pracownik);
+                    Zajecia pp = _context.Zajecia.Where(p => p.Id_zajec == id)
+                    .Include(p => p.Budynek)
+                    .First();
+                    pp.Budynek = budynek;
+                    pp.Nazwa = zajecia.Nazwa;
 
-                        await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -198,21 +200,21 @@ namespace lab10.Controllers
             {
                 _context.Zajecia.Remove(zajecia);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ZajeciaExists(int id)
         {
-          return (_context.Zajecia?.Any(e => e.Id_zajec == id)).GetValueOrDefault();
+            return (_context.Zajecia?.Any(e => e.Id_zajec == id)).GetValueOrDefault();
         }
 
-        private void PopulateBudynekDropDownList(object selectedBudynek = null) 
+        private void PopulateBudynekDropDownList(object selectedBudynek = null)
         {
             var wybranyBudynek = from z in _context.Budynek
-                                orderby z.Nazwa
-                                select z;
+                                 orderby z.Nazwa
+                                 select z;
             var res = wybranyBudynek.AsNoTracking();
             ViewBag.BudynekId = new SelectList(res, "Id_budynku", "Nazwa", selectedBudynek);
         }
